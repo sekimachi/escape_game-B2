@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>答え</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <div class="title">
+    <h1>答え</h1>
+    <button class="key" id="keyBtn" type="button" aria-label="鍵">
+      <img src="bottom.png" alt="鍵" id="keyImg">
+      <svg id="keyFallback" style="display:none" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="18" cy="32" r="11"/><circle cx="18" cy="32" r="3.5" fill="currentColor"/>
+        <path d="M29 32h29M48 32v10M56 32v7"/>
+      </svg>
+    </button>
+  </div>
+  <p class="notice">⚠ 入力できるのは一回だけです</p>
+  <div class="row"><span class="label">USB</span>
+    <div class="cells" id="usbCells"><input class="cell" maxlength="2" autocomplete="off" inputmode="numeric" aria-label="USB"></div></div>
+  <div class="row"><span class="label">パスワード</span>
+    <div class="cells" id="pwCells">
+      <input class="cell" maxlength="2" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="パスワード1文字目">
+      <input class="cell" maxlength="2" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="パスワード2文字目">
+      <input class="cell" maxlength="2" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="パスワード3文字目">
+      <input class="cell" maxlength="2" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="パスワード4文字目" id="pw4">
+    </div></div>
+  <button id="submit" type="button" disabled>確定</button>
+</main>
+
+<div class="overlay" id="overlay">
+  <div class="modal" id="modal">
+    <h2 id="mTitle"></h2><p id="mText"></p>
+    <button type="button" id="closeBtn">閉じる</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
