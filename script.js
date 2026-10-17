@@ -11,7 +11,7 @@ const active=g=>g.filter(c=>!c.classList.contains('gone'));
 const valueOf=g=>active(g).map(c=>c.value).join('');
 
 function update(){
-  submit.disabled = done || cleared || allCells.some(c=>!c.classList.contains('gone') && c.value==='');
+  submit.disabled = done || allCells.some(c=>!c.classList.contains('gone') && c.value==='');
 }
 
 allCells.forEach(cell=>{
@@ -47,13 +47,10 @@ function fill(cell,group){
 
 keyBtn.addEventListener('click',()=>{
   if(done) return;
-  pw4.value='';
-  pw4.classList.add('gone');
-  update();
   startListening();
 });
 
-// ---- 音声認識:鍵を押したあとに「USB」と言うとテキストボックスが消える ----
+// ---- 音声認識:鍵を押したあとに「USB」と言うとパスワードの4つ目のボックスだけが消える ----
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
 const toHira=s=>s.replace(/[\u30A1-\u30F6]/g,c=>String.fromCharCode(c.charCodeAt(0)-0x60));
 const isUSB=t=>{
@@ -89,8 +86,8 @@ function stopListening(){
 function clearBoxes(){
   cleared=true;
   stopListening();
-  allCells.forEach(c=>{c.value='';c.classList.add('gone');});
-  document.querySelectorAll('.cells').forEach(e=>{e.style.display='none';});
+  pw4.value='';
+  pw4.classList.add('gone');
   update();
 }
 
