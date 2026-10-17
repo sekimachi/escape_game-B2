@@ -13,10 +13,9 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;display:flex;align-items:center;justify-content:center;padding:24px}
 main{width:100%;max-width:640px;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:36px 32px;text-align:center}
 .notice{display:inline-block;color:var(--sub);border:1px solid var(--sub);border-radius:8px;padding:8px 16px;font-size:1rem;font-weight:700;margin:0 0 28px}
-.title{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:32px}
+.title{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px}
 h1{font-size:2.6rem;margin:0;letter-spacing:.3em}
-.key{background:none;border:none;cursor:pointer;padding:6px;border-radius:10px;line-height:0;color:var(--accent);transition:transform .15s}
-.key:hover:not(:disabled){transform:rotate(-12deg) scale(1.1)}
+.key{background:none;border:none;cursor:pointer;padding:6px;border-radius:10px;line-height:0;color:var(--accent)}
 .key:disabled{cursor:default}
 .key svg,.key img{width:64px;height:64px;object-fit:contain}
 .row{display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:22px}
@@ -40,7 +39,6 @@ h1{font-size:2.6rem;margin:0;letter-spacing:.3em}
 </head>
 <body>
 <main>
-  <p class="notice">⚠ 入力できるのは一回だけです</p>
   <div class="title">
     <h1>答え</h1>
     <button class="key" id="keyBtn" type="button" aria-label="鍵">
@@ -51,6 +49,7 @@ h1{font-size:2.6rem;margin:0;letter-spacing:.3em}
       </svg>
     </button>
   </div>
+  <p class="notice">⚠ 入力できるのは一回だけです</p>
   <div class="row"><span class="label">USB</span>
     <div class="cells" id="usbCells"><input class="cell" maxlength="2" autocomplete="off" inputmode="numeric" aria-label="USB"></div></div>
   <div class="row"><span class="label">パスワード</span>
