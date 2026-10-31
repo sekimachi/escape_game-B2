@@ -45,9 +45,23 @@ function fill(cell,group){
   update();
 }
 
-keyBtn.addEventListener('click',()=>{
+// 鍵を押している間だけ音声を聞き取る(離すと停止)
+keyBtn.style.touchAction='none';
+keyBtn.addEventListener('contextmenu',e=>e.preventDefault()); // 長押しメニューを防ぐ
+keyBtn.addEventListener('pointerdown',e=>{
   if(done) return;
+  try{ keyBtn.setPointerCapture(e.pointerId); }catch(_){}
   startListening();
+});
+['pointerup','pointercancel','lostpointercapture'].forEach(type=>{
+  keyBtn.addEventListener(type,stopListening);
+});
+// キーボード操作(Space / Enter を押している間)
+keyBtn.addEventListener('keydown',e=>{
+  if((e.key===' '||e.key==='Enter') && !e.repeat){ e.preventDefault(); if(!done) startListening(); }
+});
+keyBtn.addEventListener('keyup',e=>{
+  if(e.key===' '||e.key==='Enter'){ e.preventDefault(); stopListening(); }
 });
 
 // ---- 音声認識:鍵を押したあとに「USB」と言うとパスワードの4つ目のボックスだけが消える ----
