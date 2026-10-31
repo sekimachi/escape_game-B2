@@ -102,10 +102,14 @@ submit.addEventListener('click',()=>{
   done=true;
   stopListening();
   [...allCells,submit,keyBtn].forEach(e=>e.disabled=true);
-  const ok = norm(valueOf(usbCells))==='6' && norm(valueOf(pwCells))==='leg';
-  modal.className='modal '+(ok?'ok':'ng');
-  document.getElementById('mTitle').textContent = ok?'正解!':'間違っています';
-  document.getElementById('mText').textContent = ok?'おめでとうございます!':'残念ながら不正解です。';
-  overlay.classList.add('show');
+  const ok = norm(valueOf(usbCells))==='6' && norm(valueOf(pwCells))==='LEG';
+
+  // 3秒間の緊張感ある待ち時間のあとに結果を表示
+  setTimeout(()=>{
+    modal.className='modal '+(ok?'ok':'ng');
+    document.getElementById('mTitle').textContent = ok?'正解!':'間違っています';
+    document.getElementById('mText').textContent = ok?'おめでとうございます!':'残念ながら不正解です。';
+    overlay.classList.add('show');
+  }, 3000);
 });
 document.getElementById('closeBtn').addEventListener('click',()=>overlay.classList.remove('show'));
