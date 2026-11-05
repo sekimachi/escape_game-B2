@@ -330,7 +330,7 @@ h1 {
 .top {
   position: absolute;
 
-  top: calc(env(safe-area-inset-top, 0px) + 14px);
+  top: calc(env(safe-area-inset-top, 0px) + 24px);
 
   left: 50%;
   transform: translateX(-50%);
@@ -399,7 +399,7 @@ h1 {
 ======================================== */
 
 @keyframes textBlink {
-  0%, 100% {
+  0%, 100% 
     opacity: 1;
   }
 
